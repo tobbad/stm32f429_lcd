@@ -191,9 +191,9 @@ void BSP_SDRAM_Initialization_sequence(uint32_t RefreshCount)
                        SDRAM_MODEREG_OPERATING_MODE_STANDARD |
                        SDRAM_MODEREG_WRITEBURST_MODE_SINGLE;
     
-    Command.CommandMode                         = FMC_SDRAM_CMD_LOAD_MODE;
-    Command.CommandTarget                     = FMC_SDRAM_CMD_TARGET_BANK2;
-    Command.AutoRefreshNumber             = 1;
+    Command.CommandMode               = FMC_SDRAM_CMD_LOAD_MODE;
+    Command.CommandTarget             = FMC_SDRAM_CMD_TARGET_BANK2;
+    Command.AutoRefreshNumber         = 1;
     Command.ModeRegisterDefinition    = tmpmrd;
 
     /* Send the command */

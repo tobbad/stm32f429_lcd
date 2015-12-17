@@ -115,31 +115,31 @@ typedef enum
 /** 
     * @brief    LCD color    
     */ 
-#define LCD_COLOR_BLUE                    0xFF0000FF
-#define LCD_COLOR_GREEN                 0xFF00FF00
-#define LCD_COLOR_RED                     0xFFFF0000
-#define LCD_COLOR_CYAN                    0xFF00FFFF
-#define LCD_COLOR_MAGENTA             0xFFFF00FF
-#define LCD_COLOR_YELLOW                0xFFFFFF00
-#define LCD_COLOR_LIGHTBLUE         0xFF8080FF
-#define LCD_COLOR_LIGHTGREEN        0xFF80FF80
-#define LCD_COLOR_LIGHTRED            0xFFFF8080
-#define LCD_COLOR_LIGHTCYAN         0xFF80FFFF
+#define LCD_COLOR_BLUE            0xFF0000FF
+#define LCD_COLOR_GREEN           0xFF00FF00
+#define LCD_COLOR_RED             0xFFFF0000
+#define LCD_COLOR_CYAN            0xFF00FFFF
+#define LCD_COLOR_MAGENTA         0xFFFF00FF
+#define LCD_COLOR_YELLOW          0xFFFFFF00
+#define LCD_COLOR_LIGHTBLUE       0xFF8080FF
+#define LCD_COLOR_LIGHTGREEN      0xFF80FF80
+#define LCD_COLOR_LIGHTRED        0xFFFF8080
+#define LCD_COLOR_LIGHTCYAN       0xFF80FFFF
 #define LCD_COLOR_LIGHTMAGENTA    0xFFFF80FF
 #define LCD_COLOR_LIGHTYELLOW     0xFFFFFF80
-#define LCD_COLOR_DARKBLUE            0xFF000080
-#define LCD_COLOR_DARKGREEN         0xFF008000
-#define LCD_COLOR_DARKRED             0xFF800000
-#define LCD_COLOR_DARKCYAN            0xFF008080
+#define LCD_COLOR_DARKBLUE        0xFF000080
+#define LCD_COLOR_DARKGREEN       0xFF008000
+#define LCD_COLOR_DARKRED         0xFF800000
+#define LCD_COLOR_DARKCYAN        0xFF008080
 #define LCD_COLOR_DARKMAGENTA     0xFF800080
-#define LCD_COLOR_DARKYELLOW        0xFF808000
-#define LCD_COLOR_WHITE                 0xFFFFFFFF
-#define LCD_COLOR_LIGHTGRAY         0xFFD3D3D3
-#define LCD_COLOR_GRAY                    0xFF808080
-#define LCD_COLOR_DARKGRAY            0xFF404040
-#define LCD_COLOR_BLACK                 0xFF000000
-#define LCD_COLOR_BROWN                 0xFFA52A2A
-#define LCD_COLOR_ORANGE                0xFFFFA500
+#define LCD_COLOR_DARKYELLOW      0xFF808000
+#define LCD_COLOR_WHITE           0xFFFFFFFF
+#define LCD_COLOR_LIGHTGRAY       0xFFD3D3D3
+#define LCD_COLOR_GRAY            0xFF808080
+#define LCD_COLOR_DARKGRAY        0xFF404040
+#define LCD_COLOR_BLACK           0xFF000000
+#define LCD_COLOR_BROWN           0xFFA52A2A
+#define LCD_COLOR_ORANGE          0xFFFFA500
 #define LCD_COLOR_TRANSPARENT     0xFF000000
 /** 
     * @brief LCD default font 

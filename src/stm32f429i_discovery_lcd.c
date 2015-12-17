@@ -43,7 +43,7 @@
      - This driver is used to drive directly an LCD TFT using LTDC controller.
      - This driver select dynamically the mounted LCD, ILI9341 240x320 LCD mounted 
          on MB1075B discovery board, and use the adequate timing and setting for 
-     the specified LCD using device ID of the ILI9341 mounted on MB1075B discovery board                     
+         the specified LCD using device ID of the ILI9341 mounted on MB1075B discovery board
 
 2. Driver description:
 ---------------------
@@ -257,7 +257,7 @@ void BSP_LCD_LayerDefaultInit(uint16_t LayerIndex, uint32_t FB_Address)
 {         
     LCD_LayerCfgTypeDef     Layercfg;
 
- /* Layer Init */
+    /* Layer Init */
     Layercfg.WindowX0 = 0;
     Layercfg.WindowX1 = BSP_LCD_GetXSize();
     Layercfg.WindowY0 = 0;
@@ -277,7 +277,7 @@ void BSP_LCD_LayerDefaultInit(uint16_t LayerIndex, uint32_t FB_Address)
     HAL_LTDC_ConfigLayer(&LtdcHandler, &Layercfg, LayerIndex); 
 
     DrawProp[LayerIndex].BackColor = LCD_COLOR_WHITE;
-    DrawProp[LayerIndex].pFont         = &Font24;
+    DrawProp[LayerIndex].pFont     = &Font24;
     DrawProp[LayerIndex].TextColor = LCD_COLOR_BLACK; 
 
     /* Dithering activation */

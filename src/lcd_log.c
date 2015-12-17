@@ -85,7 +85,7 @@
 */ 
 
 /* Define the display window settings */
-#define         YWINDOW_MIN                 4
+#define         YWINDOW_MIN                 3
 
 /** @defgroup LCD_LOG_Private_Macros
 * @{
@@ -173,37 +173,37 @@ void LCD_LOG_DeInit(void)
 }
 
 /**
-    * @brief    Display the application header on the LCD screen 
-    * @param    header: pointer to the string to be displayed
-    * @retval None
-    */
+* @brief    Display the application header on the LCD screen
+* @param    header: pointer to the string to be displayed
+* @retval None
+*/
 void LCD_LOG_SetHeader (uint8_t *header)
 {
     if (LCD_is_initialized)
     {
         /* Set the LCD Font */
-        BSP_LCD_SetFont (&LCD_LOG_HEADER_FONT);
+        BSP_LCD_SetFont(&LCD_LOG_HEADER_FONT);
 
         BSP_LCD_SetTextColor(LCD_LOG_SOLID_BACKGROUND_COLOR);
-        BSP_LCD_FillRect(0, 0, BSP_LCD_GetXSize(), LCD_LOG_HEADER_FONT.Height * 3);
+        BSP_LCD_FillRect(0, 0, BSP_LCD_GetXSize(), LCD_LOG_HEADER_FONT.Height * LCD_LOG_HEADER_SIZE);
 
         /* Set the LCD Text Color */
         BSP_LCD_SetTextColor(LCD_LOG_SOLID_TEXT_COLOR);
         BSP_LCD_SetBackColor(LCD_LOG_SOLID_BACKGROUND_COLOR);
 
-        BSP_LCD_DisplayStringAt(0, LCD_LOG_HEADER_FONT.Height, header, CENTER_MODE);
+        BSP_LCD_DisplayStringAt(0, (LCD_LOG_HEADER_FONT.Height * (LCD_LOG_HEADER_SIZE- 1)>>2)+1, header, CENTER_MODE);
 
         BSP_LCD_SetBackColor(LCD_LOG_BACKGROUND_COLOR);
         BSP_LCD_SetTextColor(LCD_LOG_TEXT_COLOR);
-        BSP_LCD_SetFont (&LCD_LOG_TEXT_FONT);
+        BSP_LCD_SetFont(&LCD_LOG_TEXT_FONT);
     }
 }
 
 /**
-    * @brief    Display the application footer on the LCD screen 
-    * @param    footer: pointer to the string to be displayed
-    * @retval None
-    */
+* @brief    Display the application footer on the LCD screen
+* @param    footer: pointer to the string to be displayed
+* @retval None
+*/
 void LCD_LOG_SetFooter(uint8_t *footer)
 {
     if (LCD_is_initialized)
@@ -227,10 +227,10 @@ void LCD_LOG_SetFooter(uint8_t *footer)
 }
 
 /**
-    * @brief    Clear the Text Zone 
-    * @param    None 
-    * @retval None
-    */
+* @brief    Clear the Text Zone
+* @param    None
+* @retval None
+*/
 void LCD_LOG_ClearTextZone(void)
 {
     if (LCD_is_initialized)
@@ -291,12 +291,11 @@ void LCD_LOG_putc(int ch)
         {
             if(LCD_ScrollActive == ENABLE)
             {
-                    LCD_CacheBuffer_yptr_bottom = LCD_CacheBuffer_yptr_bottom_bak;
-                    LCD_CacheBuffer_yptr_top        = LCD_CacheBuffer_yptr_top_bak;
-                    LCD_ScrollActive = DISABLE;
-                    LCD_Scrolled = DISABLE;
-                    LCD_ScrollBackStep = 0;
-
+				LCD_CacheBuffer_yptr_bottom = LCD_CacheBuffer_yptr_bottom_bak;
+				LCD_CacheBuffer_yptr_top    = LCD_CacheBuffer_yptr_top_bak;
+				LCD_ScrollActive = DISABLE;
+				LCD_Scrolled = DISABLE;
+				LCD_ScrollBackStep = 0;
             }
 
             if(( LCD_CacheBuffer_xptr < (BSP_LCD_GetXSize()) /cFont->Width ) &&    ( ch != '\n'))
@@ -331,7 +330,7 @@ void LCD_LOG_putc(int ch)
 
                 LCD_CacheBuffer_xptr = 0;
 
-                LCD_LOG_UpdateDisplay ();
+                LCD_LOG_UpdateDisplay();
 
                 LCD_CacheBuffer_yptr_bottom ++;
 
@@ -418,7 +417,7 @@ ErrorStatus LCD_LOG_ScrollBack(void)
         {
 
             LCD_CacheBuffer_yptr_bottom_bak = LCD_CacheBuffer_yptr_bottom;
-            LCD_CacheBuffer_yptr_top_bak        = LCD_CacheBuffer_yptr_top;
+            LCD_CacheBuffer_yptr_top_bak    = LCD_CacheBuffer_yptr_top;
 
 
             if(LCD_CacheBuffer_yptr_bottom > LCD_CacheBuffer_yptr_top)
