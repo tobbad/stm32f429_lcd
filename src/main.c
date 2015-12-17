@@ -76,7 +76,7 @@ static void LCD_Config(void)
 
     LCD_LOG_SetHeader((uint8_t *)"LTDC Application");
     LCD_UsrLog("> USB Host library started.\n");
-    LCD_LOG_SetFooter ((uint8_t *)"                   Baerospace GmbH" );
+    LCD_LOG_SetFooter ((uint8_t *)"                   Baerospace GmbH");
 }
 
 

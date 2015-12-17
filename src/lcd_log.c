@@ -85,7 +85,7 @@
 */ 
 
 /* Define the display window settings */
-#define         YWINDOW_MIN                 3
+#define         YWINDOW_MIN                 (LCD_LOG_HEADER_SIZE)
 
 /** @defgroup LCD_LOG_Private_Macros
 * @{
@@ -191,7 +191,7 @@ void LCD_LOG_SetHeader (uint8_t *header)
         BSP_LCD_SetTextColor(LCD_LOG_SOLID_TEXT_COLOR);
         BSP_LCD_SetBackColor(LCD_LOG_SOLID_BACKGROUND_COLOR);
 
-        BSP_LCD_DisplayStringAt(0, (LCD_LOG_HEADER_FONT.Height * (LCD_LOG_HEADER_SIZE- 1)>>2)+1, header, CENTER_MODE);
+        BSP_LCD_DisplayStringAt(0, ((LCD_LOG_HEADER_FONT.Height * (LCD_LOG_HEADER_SIZE - 1))>>2), header, CENTER_MODE);
 
         BSP_LCD_SetBackColor(LCD_LOG_BACKGROUND_COLOR);
         BSP_LCD_SetTextColor(LCD_LOG_TEXT_COLOR);
@@ -208,17 +208,18 @@ void LCD_LOG_SetFooter(uint8_t *footer)
 {
     if (LCD_is_initialized)
     {
+    	uint16_t extra_space = 4;
         /* Set the LCD Font */
         BSP_LCD_SetFont (&LCD_LOG_FOOTER_FONT);
 
         BSP_LCD_SetTextColor(LCD_LOG_SOLID_BACKGROUND_COLOR);
-        BSP_LCD_FillRect(0, BSP_LCD_GetYSize() - LCD_LOG_FOOTER_FONT.Height - 4, BSP_LCD_GetXSize(), LCD_LOG_FOOTER_FONT.Height + 4);
+        BSP_LCD_FillRect(0, BSP_LCD_GetYSize() - LCD_LOG_FOOTER_FONT.Height - extra_space, BSP_LCD_GetXSize(), LCD_LOG_FOOTER_FONT.Height + 4);
 
         /* Set the LCD Text Color */
         BSP_LCD_SetTextColor(LCD_LOG_SOLID_TEXT_COLOR);
         BSP_LCD_SetBackColor(LCD_LOG_SOLID_BACKGROUND_COLOR);
 
-        BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize() - LCD_LOG_FOOTER_FONT.Height, footer, CENTER_MODE);
+        BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize() - LCD_LOG_FOOTER_FONT.Height - (extra_space>>1), footer, CENTER_MODE);
 
         BSP_LCD_SetBackColor(LCD_LOG_BACKGROUND_COLOR);
         BSP_LCD_SetTextColor(LCD_LOG_TEXT_COLOR);
