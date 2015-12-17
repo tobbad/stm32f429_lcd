@@ -88,6 +88,9 @@ main(int argc, char* argv[])
     // options to the test.
     // trace_dump_args(argc, argv);
 
+    /* Initialize the SDRAM */
+    BSP_SDRAM_Init();
+
 	/* Initialize LCD driver */
     LCD_Config();
 

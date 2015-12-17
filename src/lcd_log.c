@@ -266,6 +266,7 @@ void LCD_LOG_Write(int fd, const char* buf, size_t nbyte)
         if (buf != NULL)
         {
             size_t i;
+        	LCD_LineColor = (fd == 2)?LCD_COLOR_RED:LCD_LOG_TEXT_COLOR;
             for (i=0;i<nbyte;i++)
             {
                 LCD_LOG_putc(buf[i]);
