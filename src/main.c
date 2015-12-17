@@ -88,6 +88,9 @@ main(int argc, char* argv[])
     // options to the test.
     // trace_dump_args(argc, argv);
 
+	/* Initialize LCD driver */
+    LCD_Config();
+
     // Send a greeting to the trace device (skipped on Release).
     trace_puts("Hello ARM World!");
 
@@ -105,8 +108,6 @@ main(int argc, char* argv[])
 
     blink_led_init();
 
-    /* Initialize LCD driver */
-    LCD_Config();
 
     uint32_t seconds = 0;
 

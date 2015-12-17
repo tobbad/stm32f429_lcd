@@ -1323,8 +1323,8 @@ static void FillBuffer(uint32_t LayerIndex, void * pDst, uint32_t xSize, uint32_
 {
     
     /* Register to memory mode with ARGB8888 as color Mode */ 
-    Dma2dHandler.Init.Mode                 = DMA2D_R2M;
-    Dma2dHandler.Init.ColorMode        = DMA2D_ARGB8888;
+    Dma2dHandler.Init.Mode         = DMA2D_R2M;
+    Dma2dHandler.Init.ColorMode    = DMA2D_ARGB8888;
     Dma2dHandler.Init.OutputOffset = OffLine;            
     
     Dma2dHandler.Instance = DMA2D; 
