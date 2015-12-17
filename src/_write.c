@@ -10,6 +10,7 @@
 
 #include <errno.h>
 #include "diag/Trace.h"
+#include "lcd_log.h"
 
 // ----------------------------------------------------------------------------
 
@@ -33,17 +34,16 @@ ssize_t
 _write (int fd __attribute__((unused)), const char* buf __attribute__((unused)),
     size_t nbyte __attribute__((unused)))
 {
-#if defined(TRACE)
-  // STDOUT and STDERR are routed to the trace device
-  if (fd == 1 || fd == 2)
-    {
-      LCD_LOG_Write(fd, buf,nbyte);
-      return trace_write (buf, nbyte);
-    }
-#endif // TRACE
+	LCD_LOG_Write(fd, buf, nbyte);
+	#if defined(TRACE)
+	// STDOUT and STDERR are routed to the trace device
+	if (fd == 1 || fd == 2)
+	{
+		return trace_write (buf, nbyte);
+	}
+	#endif // TRACE
 
-  errno = ENOSYS;
-  return -1;
+	return nbyte;
 }
 
 // ----------------------------------------------------------------------------
