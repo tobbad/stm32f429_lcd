@@ -75,7 +75,7 @@ static void LCD_Config(void)
     LCD_LOG_Init();
 
     LCD_LOG_SetHeader((uint8_t *)"LTDC Application");
-    LCD_UsrLog("> Application started.\n");
+    LCD_UsrLog("*** Application started. ***\n");
     LCD_LOG_SetFooter ((uint8_t *)"                   Baerospace GmbH");
 }
 
