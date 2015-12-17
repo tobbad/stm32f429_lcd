@@ -75,7 +75,7 @@ void __attribute__ ((section(".after_vectors")))
 SysTick_Handler(void)
 {
 #if defined(USE_HAL_DRIVER)
-	HAL_IncTick();
+    HAL_IncTick();
 #endif
 }
 

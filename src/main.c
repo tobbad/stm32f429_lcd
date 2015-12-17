@@ -61,69 +61,69 @@
   */
 static void LCD_Config(void)
 {
-	/* LCD Initialization */
-	BSP_LCD_Init();
+    /* LCD Initialization */
+    BSP_LCD_Init();
 
-	/* LCD Layers Initialization */
-	BSP_LCD_LayerDefaultInit(LCD_FOREGROUND_LAYER, (LCD_FRAME_BUFFER + BUFFER_OFFSET));
+    /* LCD Layers Initialization */
+    BSP_LCD_LayerDefaultInit(LCD_FOREGROUND_LAYER, (LCD_FRAME_BUFFER + BUFFER_OFFSET));
 
-	/* Configure the transparency for foreground : Increase the transparency */
-	BSP_LCD_SetTransparency(LCD_BACKGROUND_LAYER, 0);
-	BSP_LCD_SelectLayer(LCD_FOREGROUND_LAYER);
+    /* Configure the transparency for foreground : Increase the transparency */
+    BSP_LCD_SetTransparency(LCD_BACKGROUND_LAYER, 0);
+    BSP_LCD_SelectLayer(LCD_FOREGROUND_LAYER);
 
-	/* LCD Log initialization */
-	LCD_LOG_Init();
+    /* LCD Log initialization */
+    LCD_LOG_Init();
 
-	LCD_LOG_SetHeader((uint8_t *)"LTDC Application");
-	LCD_UsrLog("> USB Host library started.\n");
-	LCD_LOG_SetFooter ((uint8_t *)"                   Baerospace GmbH" );
+    LCD_LOG_SetHeader((uint8_t *)"LTDC Application");
+    LCD_UsrLog("> USB Host library started.\n");
+    LCD_LOG_SetFooter ((uint8_t *)"                   Baerospace GmbH" );
 }
 
 
 int
 main(int argc, char* argv[])
 {
-	// By customising __initialize_args() it is possible to pass arguments,
-	// for example when running tests with semihosting you can pass various
-	// options to the test.
-	// trace_dump_args(argc, argv);
+    // By customising __initialize_args() it is possible to pass arguments,
+    // for example when running tests with semihosting you can pass various
+    // options to the test.
+    // trace_dump_args(argc, argv);
 
-	// Send a greeting to the trace device (skipped on Release).
-	trace_puts("Hello ARM World!");
+    // Send a greeting to the trace device (skipped on Release).
+    trace_puts("Hello ARM World!");
 
-	// The standard output and the standard error should be forwarded to
-	// the trace device. For this to work, a redirection in _write.c is
-	// required.
-	puts("Standard output message.");
-	fprintf(stderr, "Standard error message.\n");
+    // The standard output and the standard error should be forwarded to
+    // the trace device. For this to work, a redirection in _write.c is
+    // required.
+    puts("Standard output message.");
+    fprintf(stderr, "Standard error message.\n");
 
-	// At this stage the system clock should have already been configured
-	// at high speed.
-	trace_printf("System clock: %u Hz\n", SystemCoreClock);
+    // At this stage the system clock should have already been configured
+    // at high speed.
+    trace_printf("System clock: %u Hz\n", SystemCoreClock);
 
-	timer_start();
+    timer_start();
 
-	blink_led_init();
+    blink_led_init();
 
-	/* Initialize LCD driver */
-	LCD_Config();
+    /* Initialize LCD driver */
+    LCD_Config();
 
-	uint32_t seconds = 0;
+    uint32_t seconds = 0;
 
-	// Infinite loop
-	while (1)
-	{
-		blink_led_on();
-		timer_sleep(seconds == 0 ? TIMER_FREQUENCY_HZ : BLINK_ON_TICKS);
+    // Infinite loop
+    while (1)
+    {
+        blink_led_on();
+        timer_sleep(seconds == 0 ? TIMER_FREQUENCY_HZ : BLINK_ON_TICKS);
 
-		blink_led_off();
-		timer_sleep(BLINK_OFF_TICKS);
+        blink_led_off();
+        timer_sleep(BLINK_OFF_TICKS);
 
-		++seconds;
-		// Count seconds on the trace device.
-		LCD_UsrLog("Second %u\n", seconds);
-	}
-	// Infinite loop, never return.
+        ++seconds;
+        // Count seconds on the trace device.
+        LCD_UsrLog("Second %u\n", seconds);
+    }
+    // Infinite loop, never return.
 }
 
 #pragma GCC diagnostic pop
