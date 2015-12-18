@@ -112,7 +112,10 @@ main(int argc, char* argv[])
     blink_led_init();
 
 
-    uint32_t seconds = 0;
+    uint32_t seconds = 00;
+    uint32_t minutes = 00;
+    uint32_t hours = 0;
+    uint32_t days=0;
 
     // Infinite loop
     while (1)
@@ -123,9 +126,21 @@ main(int argc, char* argv[])
         blink_led_off();
         timer_sleep(BLINK_OFF_TICKS);
 
-        ++seconds;
+        seconds = (seconds+1)%60;
+        if ( seconds == 0)
+        {
+        	minutes = (minutes+1)%60;
+        	if ( minutes == 0 )
+        	{
+        		hours = (hours+1)%24;
+        		if (hours == 0)
+        		{
+        			days+=1;
+        		}
+        	}
+        }
         // Count seconds on the trace device.
-        LCD_UsrLog("Second %u\n", seconds);
+        LCD_UsrLog("%2d days %02u:%02u:%02u\n",days, hours, minutes, seconds);
     }
     // Infinite loop, never return.
 }
